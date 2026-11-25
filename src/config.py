@@ -93,6 +93,25 @@ EXPECTED_COLUMNS = (
     + [f"{m}_roll_mean_24h" for m in CORE_METRICS]
 )
 
+TARGET_COLS = [
+    "us_aqi",
+    "temperature_2m",
+    "precipitation_mm",
+    "precipitation_probability",
+    "relative_humidity_2m",
+    "uv_index",
+    "wind_speed_10m",
+    "wind_dir_sin",
+    "wind_dir_cos",
+]
+_NON_MODEL_COLS = {"timestamp_utc", "source_used", "is_imputed", "wind_direction_10m"}
+MODEL_FEATURE_COLS = [c for c in EXPECTED_COLUMNS if c not in _NON_MODEL_COLS]
+
+HORIZON_HOURS = 24
+VAL_HOURS = 720
+SEQ_LEN = 24
+MODEL_NAME = "lahore_weather_models"
+
 
 def openweather_key():
     return os.environ["OPENWEATHER_API_KEY"]

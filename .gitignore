@@ -220,3 +220,7 @@ __marimo__/
 .streamlit/secrets.toml
 
 .DS_Store
+
+# Local training artifacts
+artifacts/
+model_bundle/
